@@ -20,6 +20,10 @@ async function requestJenkinsJob(jobName, params, headers) {
     form: params,
     headers: headers
   }
+  core.info(`💡 URL ${req.url}`);
+  core.info(`💡 FORM ${req.params}`);
+  core.info(`💡 HEADERS ${req.headers}`);
+  
   await new Promise((resolve, reject) => request(req)
     .on('response', (res) => {
       core.info(`>>> Job is started!`);
