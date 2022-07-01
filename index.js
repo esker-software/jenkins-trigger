@@ -20,9 +20,6 @@ async function requestJenkinsJob(jobName, params, headers) {
     form: params,
     headers: headers
   }
-  core.info(`💡 URL ${req.url}`);
-  core.info(`💡 FORM ${req.params}`);
-  core.info(`💡 HEADERS ${req.headers}`);
   
   await new Promise((resolve, reject) => request(req)
     .on('response', (res) => {
@@ -95,6 +92,10 @@ async function main() {
         ...user_headers
       }
     }
+    
+    core.info(`💡 URL ${jobName}`);
+    core.info(`💡 FORM ${params}`);
+    core.info(`💡 HEADERS ${headers}`);
     
     // POST API call
     await requestJenkinsJob(jobName, params, headers);
