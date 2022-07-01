@@ -22,6 +22,10 @@ async function requestJenkinsJob(jobName, params, headers) {
     headers: headers
   }
   
+  core.info(`💡 URL ${util.inspect(req.url)}`);
+  core.info(`💡 FORM ${util.inspect(req.form)}`);
+  core.info(`💡 HEADERS ${util.inspect(req.headers)}`);
+  
   await new Promise((resolve, reject) => request(req)
     .on('response', (res) => {
       core.info(`>>> Job is started!`);
@@ -93,10 +97,6 @@ async function main() {
         ...user_headers
       }
     }
-    
-    core.info(`💡 URL ${util.inspect(jobName)}`);
-    core.info(`💡 FORM ${util.inspect(params)}`);
-    core.info(`💡 HEADERS ${util.inspect(headers)}`);
     
     // POST API call
     await requestJenkinsJob(jobName, params, headers);
