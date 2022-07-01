@@ -93,9 +93,9 @@ async function main() {
       }
     }
     
-    core.info(`💡 URL ${jobName}`);
-    core.info(`💡 FORM ${params}`);
-    core.info(`💡 HEADERS ${headers}`);
+    core.info(`💡 URL ${util.inspect(jobName)}`);
+    core.info(`💡 FORM ${util.inspect(params)}`);
+    core.info(`💡 HEADERS ${util.inspect(headers)}`);
     
     // POST API call
     await requestJenkinsJob(jobName, params, headers);
