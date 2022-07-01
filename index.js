@@ -1,5 +1,6 @@
 const request = require('request');
 const core = require('@actions/core');
+var util = require('util')
 
 let timer = setTimeout(() => {
   core.setFailed("Job Timeout");
